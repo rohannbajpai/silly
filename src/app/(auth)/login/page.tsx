@@ -102,7 +102,7 @@ export default function LoginPage() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full mt-4" disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
             <p className="text-sm text-center">
