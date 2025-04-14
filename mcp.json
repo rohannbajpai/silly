@@ -1,0 +1,135 @@
+{
+  "name": "Vercel MCP Integration",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) integration for Vercel's REST API, providing programmatic access to Vercel deployment management",
+  "servers": [
+    {
+      "name": "Vercel MCP Server",
+      "type": "stdio",
+      "command": "node dist/index.js",
+      "description": "Vercel MCP server for deployment management and monitoring"
+    }
+  ],
+  "tools": {
+    "vercel-list-all-deployments": {
+      "description": "List deployments under the authenticated user or team",
+      "inputs": {
+        "app": "string",
+        "projectId": "string",
+        "state": "string",
+        "target": "string",
+        "limit": "number"
+      },
+      "returns": "Array of deployment objects with status, URLs, and metadata"
+    },
+    "vercel-get-deployment": {
+      "description": "Get detailed information about a specific deployment",
+      "inputs": {
+        "idOrUrl": "string",
+        "teamId": "string"
+      },
+      "returns": "Full deployment details including build logs, domains, and environment variables"
+    },
+    "vercel-create-deployment": {
+      "description": "Create a new Vercel deployment",
+      "inputs": {
+        "name": "string",
+        "project": "string",
+        "target": "string",
+        "regions": "string[]",
+        "teamId": "string",
+        "forceNew": "boolean"
+      },
+      "returns": "Created deployment details with status URLs"
+    },
+    "vercel-create-project": {
+      "description": "Create a new Vercel project",
+      "inputs": {
+        "name": "string",
+        "framework": "string",
+        "buildCommand": "string",
+        "devCommand": "string",
+        "outputDirectory": "string",
+        "teamId": "string"
+      },
+      "returns": "Project configuration with deployment settings"
+    },
+    "vercel-create-environment-variables": {
+      "description": "Create multiple environment variables for a project",
+      "inputs": {
+        "projectId": "string",
+        "teamId": "string",
+        "environmentVariables": [
+          {
+            "key": "string",
+            "value": "string",
+            "target": "string[]",
+            "type": "string",
+            "gitBranch": "string"
+          }
+        ]
+      },
+      "returns": "Object with created variables and any skipped entries"
+    },
+    "vercel-list-all-teams": {
+      "description": "List all teams accessible to authenticated user",
+      "inputs": {
+        "limit": "number",
+        "since": "number",
+        "until": "number",
+        "teamId": "string"
+      },
+      "returns": "Paginated list of team objects with metadata"
+    },
+    "vercel-list-projects": {
+      "description": "List all projects under the authenticated user or team",
+      "inputs": {
+        "limit": "number",
+        "from": "number",
+        "teamId": "string"
+      },
+      "returns": "Paginated list of project objects with metadata"
+    }
+  },
+  "configuration": {
+    "environment_variables": {
+      "VERCEL_API_TOKEN": {
+        "description": "Vercel access token",
+        "required": true
+      }
+    },
+    "prerequisites": [
+      "Node.js 18+",
+      "Vercel API Token",
+      "MCP Client"
+    ]
+  },
+  "documentation": {
+    "overview": "This MCP server implements Vercel's core API endpoints as tools, enabling deployment monitoring & management, environment variable retrieval, project deployment status tracking, and CI/CD pipeline integration.",
+    "features": [
+      "Deployment monitoring & management",
+      "Environment variable retrieval",
+      "Project deployment status tracking",
+      "CI/CD pipeline integration"
+    ],
+    "roadmap": [
+      "Deployment creation workflow",
+      "Project management tools",
+      "Team management integration",
+      "Real-time deployment monitoring",
+      "Advanced error handling",
+      "Deployment metrics dashboard"
+    ],
+    "project_structure": {
+      "src/": {
+        "constants/": "Tool definitions",
+        "tools/": {
+          "deployments/": "Deployment handlers",
+          "environments/": "Environment management"
+        },
+        "utils/": "API helpers",
+        "index.ts": "Server entrypoint"
+      }
+    }
+  }
+} 

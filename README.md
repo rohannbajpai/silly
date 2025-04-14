@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SILLY.com
+
+A playful, personalized self-improvement web application that makes personal growth less intimidating and more engaging through a fun interface, personalized onboarding, adaptable content, and an interactive mascot ("Blobby").
+
+## Prerequisites
+
+- Node.js (LTS version, e.g., v20.x.x)
+- npm or yarn (latest stable version)
+- Git (latest stable version)
+- VS Code (Recommended IDE) with Prettier & ESLint extensions
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd silly-com-app
+```
 
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.local.example .env.local
+```
+Then edit `.env.local` with your Firebase configuration values.
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (auth)/            # Authentication routes (login, signup)
+│   ├── (main)/            # Main app routes (dashboard)
+│   └── onboarding/        # Onboarding flow
+├── components/            # React components
+│   ├── blobby/           # Blobby mascot components
+│   ├── goals/            # Goal management components
+│   ├── feedback/         # User feedback components
+│   ├── onboarding/       # Onboarding components
+│   └── ui/               # Shadcn UI components
+├── contexts/             # React contexts
+├── lib/                  # Utilities and constants
+└── types/               # TypeScript type definitions
+```
 
-## Learn More
+## Technology Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Framework: Next.js (^14.2.0)
+- Language: TypeScript (^5.4.0)
+- UI Library: React (^18.2.0)
+- Styling: Tailwind CSS (^3.4.0)
+- UI Components: Shadcn/ui
+- State Management: Zustand (^4.5.0)
+- Animation: 
+  - lottie-react (^2.4.0)
+  - framer-motion (^11.0.0)
+- Database: Firebase Firestore
+- Authentication: Firebase Authentication
+- Hosting: Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Guidelines
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Follow the TypeScript and ESLint configurations
+2. Use Prettier for code formatting
+3. Follow the component structure and naming conventions
+4. Keep components small and focused
+5. Use Tailwind CSS for styling
+6. Implement responsive design for all components
+7. Write meaningful commit messages
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Add your license here]
