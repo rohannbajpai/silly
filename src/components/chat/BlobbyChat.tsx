@@ -63,16 +63,16 @@ export default function BlobbyChat({ onGoalCreated, onTipShared }: BlobbyChatPro
   const generateBlobbyResponse = (userMessage: string) => {
     const lowercaseMessage = userMessage.toLowerCase();
     let response = '';
-    let newStatus: keyof typeof BLOBBY_STATES = 'SUPPORTIVE';
+    let newStatus: 'IDLE' | 'THINKING' | 'CELEBRATE' | 'WAVE' | 'SAD' = 'IDLE';
 
     // Simple response logic based on keywords
     if (lowercaseMessage.includes('goal') || lowercaseMessage.includes('want to')) {
       if (lowercaseMessage.includes('help') || lowercaseMessage.includes('how')) {
         response = "I'd be happy to help you with your goals! What specific goal are you working on? Remember, the most effective goals are specific, measurable, achievable, relevant, and time-bound.";
-        newStatus = 'SUPPORTIVE';
+        newStatus = 'THINKING';
       } else {
         response = "That sounds like a great goal! Would you like to add this to your goals list? I can help you break it down into manageable steps.";
-        newStatus = 'CELEBRATING';
+        newStatus = 'CELEBRATE';
         if (onGoalCreated && lowercaseMessage.length > 10) {
           // Extract potential goal from message
           const goalText = userMessage.replace(/my goal is|i want to|i'd like to|i would like to/gi, '').trim();
@@ -83,10 +83,10 @@ export default function BlobbyChat({ onGoalCreated, onTipShared }: BlobbyChatPro
       }
     } else if (lowercaseMessage.includes('sad') || lowercaseMessage.includes('difficult') || lowercaseMessage.includes('hard')) {
       response = "I'm sorry to hear you're feeling that way. It's normal to face challenges. What's one small step you could take today to move forward?";
-      newStatus = 'SUPPORTIVE';
+      newStatus = 'SAD';
     } else if (lowercaseMessage.includes('thank') || lowercaseMessage.includes('thanks')) {
       response = "You're welcome! I'm here to support you on your journey. Keep up the great work!";
-      newStatus = 'CELEBRATING';
+      newStatus = 'CELEBRATE';
     } else if (lowercaseMessage.includes('tip') || lowercaseMessage.includes('advice')) {
       response = "Here's a tip: Try breaking down big goals into smaller, actionable tasks. This makes progress more manageable and gives you more frequent wins to celebrate!";
       newStatus = 'THINKING';

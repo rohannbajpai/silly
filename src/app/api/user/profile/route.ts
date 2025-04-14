@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { auth, db } from '@/lib/firebase-admin';
 
+// Mark route as dynamic to prevent static generation
+export const dynamic = 'force-dynamic';
+
 // Get user profile
 export async function GET(request: Request) {
   try {

@@ -1,15 +1,22 @@
-import { NextResponse } from 'next/server';
-import { auth } from '@/lib/firebase-admin';
+import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { auth } from '@/lib/firebase-admin';
 
-export async function POST(request: Request) {
+// Mark route as dynamic to prevent static generation
+export const dynamic = 'force-dynamic';
+
+export async function POST(request: NextRequest) {
   try {
     const { idToken } = await request.json();
 
     if (!idToken) {
+      return NextResponse.json({ error: 'ID token is required' }, { status: 400 });
+    }
+
+    if (!auth) {
       return NextResponse.json(
-        { error: 'ID token is required' },
-        { status: 400 }
+        { error: 'Firebase Admin is not initialized' },
+        { status: 500 }
       );
     }
 
@@ -22,16 +29,12 @@ export async function POST(request: Request) {
       maxAge: expiresIn,
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
       path: '/',
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error creating session cookie:', error);
-    return NextResponse.json(
-      { error: 'Failed to create session cookie' },
-      { status: 500 }
-    );
+    console.error('Error creating session:', error);
+    return NextResponse.json({ error: 'Failed to create session' }, { status: 401 });
   }
 } 

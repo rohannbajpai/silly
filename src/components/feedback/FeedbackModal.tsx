@@ -177,7 +177,12 @@ const theme = {
 };
 
 // Add proper ARIA labels and roles
-const GoalCard = ({ goal }) => {
+const GoalCard = ({ goal }: { goal: { title: string } }) => {
+  const handleComplete = () => {
+    // This is just a stub function
+    console.log('Complete goal:', goal.title);
+  };
+  
   return (
     <div 
       role="article"

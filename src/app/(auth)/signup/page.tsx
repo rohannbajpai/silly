@@ -77,19 +77,12 @@ export default function SignupPage() {
       console.error('Auth error:', authError);
       if (authError.code === 'auth/email-already-in-use') {
         setError(
-          <div>
-            This email is already registered.{' '}
-            <Link href="/login" className="text-primary hover:underline">
-              Sign in instead
-            </Link>
-          </div>
+          "This email is already registered. Sign in instead."
         );
-      } else if (authError.code === 'auth/network-request-failed') {
-        setError('Network error. Please check your internet connection.');
-      } else if (authError.code === 'auth/too-many-requests') {
-        setError('Too many attempts. Please try again later.');
+      } else if (authError.code === 'auth/weak-password') {
+        setError('Password should be at least 6 characters');
       } else {
-        setError('Failed to create account. Please try again.');
+        setError(authError.message || 'Failed to create account');
       }
     } finally {
       setLoading(false);

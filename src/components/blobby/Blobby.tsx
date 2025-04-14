@@ -112,7 +112,6 @@ export default function Blobby({
           style={{ width: '100%', height: '100%' }}
           rendererSettings={{
             preserveAspectRatio: 'xMidYMid slice',
-            clearCanvas: false,
           }}
         />
       </div>
