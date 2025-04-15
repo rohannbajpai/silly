@@ -64,7 +64,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Welcome to SILLY.com</CardTitle>
+          <CardTitle>Welcome to SILLY</CardTitle>
           <CardDescription>Sign in to continue your self-improvement journey</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>

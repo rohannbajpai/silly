@@ -93,7 +93,7 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Join SILLY.com</CardTitle>
+          <CardTitle>Join SILLY</CardTitle>
           <CardDescription>Create an account to start your self-improvement journey</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>

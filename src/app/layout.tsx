@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SILLY.com - Playful Self-Improvement",
+  title: "SILLY - Playful Self-Improvement",
   description: "Make personal growth less intimidating and more engaging through a fun interface and an interactive mascot.",
 };
 

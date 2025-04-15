@@ -23,7 +23,7 @@ export default function OnboardingLayout({
     <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="container mx-auto px-4 h-16 flex items-center">
-          <h1 className="text-2xl font-bold">SILLY.com</h1>
+          <h1 className="text-2xl font-bold">SILLY</h1>
         </div>
         <div className="container mx-auto px-4 py-2">
           <Progress value={progress} className="w-full" />

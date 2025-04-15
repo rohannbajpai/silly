@@ -1,4 +1,4 @@
-# SILLY.com
+# SILLY
 
 A playful, personalized self-improvement web application that makes personal growth less intimidating and more engaging through a fun interface, personalized onboarding, adaptable content, and an interactive mascot ("Blobby").
 
@@ -14,7 +14,7 @@ A playful, personalized self-improvement web application that makes personal gro
 1. Clone the repository:
 ```bash
 git clone [repository-url]
-cd silly-com-app
+cd silly-app
 ```
 
 2. Install dependencies:
